@@ -1,0 +1,23 @@
+.auth__field {
+  border: 0;
+  width: 100%;
+  padding: 5px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
+  background-color: black;
+  margin: 0;
+  font-family: 'Inter', ‘Arial’, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: white;
+}
+
+.auth__field:active, .auth__field:focus {
+  outline: none;
+}
+
+.auth__field::-moz-focus-inner {
+  border: 0;
+}

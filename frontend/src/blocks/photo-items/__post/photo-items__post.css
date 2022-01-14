@@ -1,0 +1,13 @@
+.photo-items__post {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-width: 282px;
+  object-fit: cover;
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}

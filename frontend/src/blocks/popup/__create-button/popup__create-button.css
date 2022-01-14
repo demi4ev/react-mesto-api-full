@@ -1,0 +1,31 @@
+.popup__create-button {
+  padding: 0;
+  margin: 32px 0 0;
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-family: 'Inter', ‘Arial’, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  color: white;
+  background-color: black;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.popup__create-button:hover {
+  opacity: .8;
+}
+
+.popup__create-button:active, .popup__create-button:focus {
+  outline: none;
+}
+
+.popup__create-button::-moz-focus-inner {
+  border: 0;
+}

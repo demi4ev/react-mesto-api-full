@@ -1,0 +1,17 @@
+.header__link {
+  font-family: 'Inter', ‘Arial’, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  text-decoration: none;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300px;
+  transition: opacity 0.2s;
+}
+
+.header__link:hover {
+  opacity: .6;
+}

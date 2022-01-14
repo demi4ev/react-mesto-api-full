@@ -1,0 +1,16 @@
+.default-back {
+  background: black;
+  margin: 0 auto;
+  padding: 0 19px;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .default-back {
+    padding: 0;
+  }
+}
+
+.content {
+  background-color: black;
+}

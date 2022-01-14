@@ -1,0 +1,9 @@
+.popup__label {
+  display: block;
+  position: relative;
+  margin: 0 0 30px;
+}
+
+.popup__label :last-child {
+  margin-bottom: 0;
+}

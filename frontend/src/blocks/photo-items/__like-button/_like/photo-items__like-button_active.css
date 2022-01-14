@@ -1,0 +1,3 @@
+.photo-items__like-button_active:before {
+  content: url(../../../../images/like-button_active.svg);
+}
