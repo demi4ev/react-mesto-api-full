@@ -10,7 +10,7 @@ const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 7000 } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
 
 require('dotenv').config();
@@ -19,7 +19,9 @@ const corsOptions = {
   origin: [
     'https://api.mesto.demichev.nomoredomains.rocks',
     'http://api.mesto.demichev.nomoredomains.rocks',
-    'http://localhost:7000',
+    'https://mesto.demichev.nomoredomains.rocks',
+    'http://mesto.demichev.nomoredomains.rocks',
+    'http://localhost:3000',
   ],
   credentials: true,
 };
