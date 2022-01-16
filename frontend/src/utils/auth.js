@@ -1,4 +1,4 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://api.mesto.demichev.nomoredomains.rocks/';
 
 const checkResponse = (response) => {
   if (!response.ok) {

@@ -1,21 +1,28 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-require('dotenv').config();
-
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
+// const cors = require('./middlewares/cors');
+const cors = require('cors');
 const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 7000 } = process.env;
 const app = express();
 
-app.use(cors);
+require('dotenv').config();
+
+const corsOptions = {
+  origin: [
+    'https://api.mesto.demichev.nomoredomains.rocks',
+    'http://api.mesto.demichev.nomoredomains.rocks',
+    'http://localhost:7000',
+  ],
+  credentials: true,
+};
 
 app.use(cookieParser());
 
@@ -33,6 +40,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {});
 app.use(express.json());
 
 app.use(requestLogger);
+
+app.use(cors(corsOptions));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -69,6 +78,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`App listening on port ${PORT}`);
 });
