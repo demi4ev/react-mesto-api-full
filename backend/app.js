@@ -48,6 +48,8 @@ const corsOptions = {
   origin: [
     'https://mesto.demichev.nomoredomains.rocks',
     'http://mesto.demichev.nomoredomains.rocks',
+    'https://api.mesto.demichev.nomoredomains.rocks',
+    'http://api.mesto.demichev.nomoredomains.rocks',
     'https://62.84.124.154',
     'http://62.84.124.154',
     'http://localhost:3000',
