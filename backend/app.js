@@ -29,22 +29,37 @@ const auth = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {});
 
-app.use(
-  cors({
-    origin: [
-      'https://mesto.demichev.nomoredomains.rocks',
-      'http://mesto.demichev.nomoredomains.rocks',
-      'http://localhost:3000',
-    ],
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
-    allowedHeaders: ['Authorization', 'Content-Type'],
-    credentials: true,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: [
+//       'https://mesto.demichev.nomoredomains.rocks',
+//       'http://mesto.demichev.nomoredomains.rocks',
+//       'https://62.84.124.154',
+//       'http://62.84.124.154',
+//       'http://localhost:3000',
+//     ],
+//     methods: ['GET', 'PUT', 'POST', 'DELETE'],
+//     allowedHeaders: ['Authorization', 'Content-Type'],
+//     credentials: true,
+//   }),
+// );
+
+const corsOptions = {
+  origin: [
+    'https://mesto.demichev.nomoredomains.rocks',
+    'http://mesto.demichev.nomoredomains.rocks',
+    'https://62.84.124.154',
+    'http://62.84.124.154',
+    'http://localhost:3000',
+  ],
+  credentials: true,
+};
 
 app.use(express.json());
 
 app.use(requestLogger);
+
+app.use(cors(corsOptions));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
