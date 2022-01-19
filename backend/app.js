@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const cors = require('./middlewares/cors');
-// const cors = require('cors');
+// const cors = require('./middlewares/cors');
+const cors = require('cors');
 const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -28,6 +28,19 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {});
+
+app.use(
+  cors({
+    origin: [
+      'https://mesto.demichev.nomoredomains.rocks',
+      'http://mesto.demichev.nomoredomains.rocks',
+      'http://localhost:3000',
+    ],
+    methods: ['GET', 'PUT', 'POST', 'DELETE'],
+    allowedHeaders: ['Authorization', 'Content-Type'],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
