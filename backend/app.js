@@ -20,6 +20,8 @@ const corsAllowed = [
   'https://localhost:3000',
   'http://mesto.demichev.nomoredomains.rocks/',
   'https://mesto.demichev.nomoredomains.rocks/',
+  'http://api.mesto.demichev.nomoredomains.rocks/',
+  'https://api.mesto.demichev.nomoredomains.rocks/',
 ];
 
 require('dotenv').config();
