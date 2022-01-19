@@ -18,8 +18,8 @@ const corsAllowed = [
   'http://praktikum.tk',
   'http://localhost:3000',
   'https://localhost:3000',
-  'http://asadrtdinov.nomoredomains.rocks',
-  'https://asadrtdinov.nomoredomains.rocks',
+  'http://mesto.demichev.nomoredomains.rocks/',
+  'https://mesto.demichev.nomoredomains.rocks/',
 ];
 
 require('dotenv').config();
