@@ -14,9 +14,10 @@ export class Api {
 
   getInitialCards() {
     return fetch(`${this._address}/cards`, {
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     })
     .then(this._checkResponseData)
@@ -37,6 +38,7 @@ export class Api {
   addCard(title, link) {
     return fetch(`${this._address}/cards`, {
       method: 'POST',
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -55,6 +57,7 @@ export class Api {
   removeCard(cardId) {
     return fetch(`${this._address}/cards/${cardId}`,{
       method: 'DELETE',
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`
       }
@@ -68,6 +71,7 @@ export class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: isLiked ? 'DELETE' : 'PUT',
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`
       }
@@ -81,6 +85,7 @@ export class Api {
   removeLike(cardId) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: 'DELETE',
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`
       }
@@ -93,6 +98,7 @@ export class Api {
 
   getUserInfo() {
     return fetch(`${this._address}/users/me`, {
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -107,6 +113,7 @@ export class Api {
   setUserInfo(name, about) {
     return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -125,6 +132,7 @@ export class Api {
   updateAvatar(avatarLink) {
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
+      // credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-type': 'application/json'

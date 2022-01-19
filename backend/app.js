@@ -1,13 +1,11 @@
 const express = require('express');
-
-require('dotenv').config();
-
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
+const cors = require('cors');
 const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -15,7 +13,34 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(cors);
+// app.use(cors);
+
+const corsAllowed = [
+  'https://mesto.demichev.nomoredomains.rocks',
+  'http://mesto.demichev.nomoredomains.rocks',
+  'https://api.mesto.demichev.nomoredomains.rocks',
+  'http://api.mesto.demichev.nomoredomains.rocks',
+  'https://62.84.124.154',
+  'http://62.84.124.154',
+  'http://localhost:3000',
+];
+
+require('dotenv').config();
+
+app.use(
+  cors({
+    credentials: true,
+    origin(origin, callback) {
+      if (corsAllowed.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  }),
+);
+
+app.options('*', cors());
 
 app.use(cookieParser());
 
@@ -70,5 +95,5 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
-  // console.log(process.env.JWT_SECRET);
+  console.log(process.env.JWT_SECRET);
 });
