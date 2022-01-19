@@ -18,9 +18,7 @@ import Login from './Login';
 import Register from './Register';
 import ProtectedRoute from './ProtectedRoute';
 
-import Api from '../utils/api';
-import {BASE_URL} from '../utils/auth';
-
+import api from '../utils/api';
 import * as auth from '../utils/auth';
 
 import regOk from '../images/check.svg';
@@ -76,8 +74,6 @@ function App () {
       console.log(err)
     })
   }, [])
-
-  const api = new Api({adress: BASE_URL, token: localStorage.getItem('token') });
 
 
   function handleEditProfileClick () {
