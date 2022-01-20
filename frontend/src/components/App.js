@@ -187,7 +187,7 @@ function App () {
   function handleLogin({ email, password }) {
     auth.authorize(email, password)
     .then((res) => {
-      localStorage.setItem('jwt', res.token);
+      localStorage.setItem('token', res.token);
       setLoggedIn(true);
       setEmail(email);
       handleInfoTooltipContent({

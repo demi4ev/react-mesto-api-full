@@ -1,5 +1,3 @@
-import { BASE_URL } from '../utils/auth';
-
 export class Api {
 
 
@@ -14,7 +12,7 @@ export class Api {
 
   getInitialCards() {
     return fetch(`${this._address}/cards`, {
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
@@ -38,7 +36,7 @@ export class Api {
   addCard(title, link) {
     return fetch(`${this._address}/cards`, {
       method: 'POST',
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -57,7 +55,7 @@ export class Api {
   removeCard(cardId) {
     return fetch(`${this._address}/cards/${cardId}`,{
       method: 'DELETE',
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`
       }
@@ -71,7 +69,7 @@ export class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: isLiked ? 'DELETE' : 'PUT',
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`
       }
@@ -85,7 +83,7 @@ export class Api {
   removeLike(cardId) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: 'DELETE',
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`
       }
@@ -98,7 +96,7 @@ export class Api {
 
   getUserInfo() {
     return fetch(`${this._address}/users/me`, {
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -113,7 +111,7 @@ export class Api {
   setUserInfo(name, about) {
     return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -132,7 +130,7 @@ export class Api {
   updateAvatar(avatarLink) {
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
-      // credentials: "include",
+      credentials: "include",
       headers: {
         authorization: `Bearer ${this._token}`,
         'Content-type': 'application/json'
@@ -156,7 +154,7 @@ export class Api {
 // })
 
 const api = new Api ({
-  adress: BASE_URL,
+  adress: 'https://api.mesto.demichev.nomoredomains.rocks',
   token: localStorage.getItem('token')
 })
 
