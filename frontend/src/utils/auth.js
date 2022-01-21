@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.mesto.demichev.nomoredomains.rocks';
+const BASE_URL = 'https://auth.nomoreparties.co';
 
 const checkResponse = (response) => {
   if (!response.ok) {
@@ -37,7 +37,7 @@ export const authorize = (email, password) => {
   .then((data) => {
     if (data.token) {
       localStorage.setItem('jwt', data.token);
-      return data.token;
+      return data;
     }
   })
 };
@@ -52,6 +52,5 @@ export const getContent = (jwt) => {
     }
   })
   .then(checkResponse)
-  .then((data) => data)
 };
 

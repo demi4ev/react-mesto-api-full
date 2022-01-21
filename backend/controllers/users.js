@@ -60,7 +60,7 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Некорректные данные');
-      } else if (err.name === 11000) {
+      } else if (err.name === 'MongoError') {
         throw new ConflictError('Ошибка базы данных');
       } else {
         next(err);

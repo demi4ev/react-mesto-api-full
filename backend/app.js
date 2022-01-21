@@ -1,48 +1,15 @@
-require('dotenv').config();
-
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-// const cors = require('./middlewares/cors');
-const cors = require('cors');
 const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-
-// app.use(cors);
-
-const corsAllowed = [
-  'https://mesto.demichev.nomoredomains.rocks',
-  'http://mesto.demichev.nomoredomains.rocks',
-  'https://api.mesto.demichev.nomoredomains.rocks',
-  'http://api.mesto.demichev.nomoredomains.rocks',
-  'https://62.84.124.154',
-  'http://62.84.124.154',
-  'http://localhost:3000',
-];
-
-require('dotenv').config();
-
-app.use(
-  cors({
-    credentials: true,
-    origin(origin, callback) {
-      if (corsAllowed.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  }),
-);
-
-app.options('*', cors());
 
 app.use(cookieParser());
 
@@ -60,12 +27,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {});
 app.use(express.json());
 
 app.use(requestLogger);
-
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 
 app.post('/signin', validateSignIn, login);
 app.post('/signup', validateSignUp, createUser);
@@ -96,6 +57,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`App listening on port ${PORT}`);
-  console.log(process.env.JWT_SECRET);
 });
