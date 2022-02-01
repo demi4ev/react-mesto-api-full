@@ -47,6 +47,7 @@ export const authorize = (email, password) => {
 export const getContent = (jwt) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${jwt}`,
