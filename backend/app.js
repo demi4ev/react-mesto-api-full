@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const cors = require('cors');
+// const cors = require('cors');
 const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -12,18 +12,18 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-const allowedCors = [
-  'https://localhost:3000',
-  'http://localhost:3000',
-  'https://api.mesto.demichev.nomoredomains.rocks',
-  'http://api.mesto.demichev.nomoredomains.rocks',
-  'https://mesto.demichev.nomoredomains.rocks',
-  'http://mesto.demichev.nomoredomains.rocks',
-];
+// const allowedCors = [
+//   'https://localhost:3000',
+//   'http://localhost:3000',
+//   'https://api.mesto.demichev.nomoredomains.rocks',
+//   'http://api.mesto.demichev.nomoredomains.rocks',
+//   'https://mesto.demichev.nomoredomains.rocks',
+//   'http://mesto.demichev.nomoredomains.rocks',
+// ];
 
-app.use(cors({
-  origin: allowedCors,
-}));
+// app.use(cors({
+//   origin: allowedCors,
+// }));
 
 app.use(cookieParser());
 
