@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const cors = require('./middlewares/cors');
+const cors = require('cors');
 const NotFoundError = require('./errors/NotFoundError'); // 404
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -12,30 +12,25 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(cors);
+const allowedCors = [
+  'http://localhost:3000',
+  'https://localhost:3000',
+  'https://mesto.demichev.nomoredomains.rocks',
+  'http://mesto.demichev.nomoredomains.rocks',
+];
 
-// const allowedCors = [
-//   'https://praktikum.tk',
-//   'http://praktikum.tk',
-//   'localhost:3000',
-//   'http://localhost:3000',
-//   'https://localhost:3000',
-//   'https://mesto.demichev.nomoredomains.rocks',
-//   'http://mesto.demichev.nomoredomains.rocks',
-// ];
-
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin(origin, callback) {
-//       if (allowedCors.includes(origin) || !origin) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error('Not allowed by CORS'));
-//       }
-//     },
-//   }),
-// );
+app.use(
+  cors({
+    credentials: true,
+    origin(origin, callback) {
+      if (allowedCors.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  }),
+);
 
 app.use(cookieParser());
 
