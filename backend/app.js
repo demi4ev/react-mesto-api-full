@@ -12,27 +12,16 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(cors);
+const allowedCors = [
+  'https://localhost:3000',
+  'http://localhost:3000',
+  'https://mesto.demichev.nomoredomains.rocks',
+  'http://mesto.demichev.nomoredomains.rocks',
+];
 
-// const allowedCors = [
-//   'http://localhost:3000',
-//   'https://localhost:3000',
-//   'https://mesto.demichev.nomoredomains.rocks',
-//   'http://mesto.demichev.nomoredomains.rocks',
-// ];
-
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin(origin, callback) {
-//       if (allowedCors.includes(origin) || !origin) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error('Not allowed by CORS'));
-//       }
-//     },
-//   }),
-// );
+app.use(cors({
+  origin: allowedCors,
+}));
 
 app.use(cookieParser());
 

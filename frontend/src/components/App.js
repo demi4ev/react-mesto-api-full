@@ -46,7 +46,7 @@ function App () {
   const history = useHistory();
 
   const api = new Api ({
-    address: 'http://api.mesto.demichev.nomoredomains.rocks',
+    address: 'https://api.mesto.demichev.nomoredomains.rocks',
     token: localStorage.getItem('jwt')
   })
 
