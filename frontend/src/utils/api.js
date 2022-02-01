@@ -1,4 +1,4 @@
-export default class Api {
+class Api {
 
 
   constructor({ address, token }) {
@@ -145,9 +145,9 @@ export default class Api {
 //   token: '136295e8-ffc2-40cf-adc6-28fc5ce50eaf'
 // })
 
-// const api = new Api ({
-//   address: 'http://mesto.demichev.nomoredomains.rocks/api',
-//   token: localStorage.getItem('token')
-// })
+const api = new Api ({
+  address: 'https://api.mesto.demichev.nomoredomains.rocks',
+  token: localStorage.getItem('token')
+})
 
-// export default api;
+export default api;
