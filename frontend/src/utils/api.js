@@ -1,4 +1,4 @@
-export class Api {
+export default class Api {
 
 
   constructor({ address, token }) {
@@ -136,13 +136,18 @@ export class Api {
 
 }
 
-const api = new Api ({
-  address: 'https://mesto.nomoreparties.co/v1/cohort-26',
-  // headers: {
-  //   authorization: '136295e8-ffc2-40cf-adc6-28fc5ce50eaf',
-  //   'Content-type': 'application/json'
-  // }
-  token: '136295e8-ffc2-40cf-adc6-28fc5ce50eaf'
-})
+// const api = new Api ({
+//   address: 'https://mesto.nomoreparties.co/v1/cohort-26',
+//   // headers: {
+//   //   authorization: '136295e8-ffc2-40cf-adc6-28fc5ce50eaf',
+//   //   'Content-type': 'application/json'
+//   // }
+//   token: '136295e8-ffc2-40cf-adc6-28fc5ce50eaf'
+// })
 
-export default api;
+// const api = new Api ({
+//   address: 'http://mesto.demichev.nomoredomains.rocks/api',
+//   token: localStorage.getItem('token')
+// })
+
+// export default api;

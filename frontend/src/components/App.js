@@ -18,7 +18,7 @@ import Login from './Login';
 import Register from './Register';
 import ProtectedRoute from './ProtectedRoute';
 
-import api from '../utils/api';
+import Api from '../utils/api';
 import * as auth from '../utils/auth';
 
 import regOk from '../images/check.svg';
@@ -44,6 +44,11 @@ function App () {
   const [cards, setCards] = React.useState([]);
 
   const history = useHistory();
+
+  const api = new Api ({
+    address: 'http://api.mesto.demichev.nomoredomains.rocks',
+    token: localStorage.getItem('jwt')
+  })
 
 
   React.useEffect(() => {
